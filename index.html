@@ -17,12 +17,32 @@
 
   <p id="output" style="margin-top:20px"></p>
 
-  <script>
-    function runAgent() {
-      document.getElementById("output").innerText =
-        "✅ Task completed\n💰 Charged 0.01 USDC\n⛓ Settled on Arc (testnet)";
-    }
-  </script>
+ <script>
+function runAgent() {
+  const task = document.querySelector("textarea").value;
+
+  if (!task.trim()) {
+    document.getElementById("output").innerText =
+      "⚠️ Please enter a task for the AI agent.";
+    return;
+  }
+
+  document.getElementById("output").innerText =
+    "🤖 Agent is thinking using Gemini...\n";
+
+  setTimeout(() => {
+    const aiResponse =
+      "📄 AI Response: Task understood and processed.\n" +
+      "🧠 Agent Decision: This task requires AI processing.\n" +
+      "💰 Payment Triggered: 0.01 USDC\n" +
+      "⛓ Settled on Arc (testnet)\n\n" +
+      "✅ Task completed successfully.";
+
+    document.getElementById("output").innerText = aiResponse;
+  }, 1500);
+}
+</script>
+
 
 </body>
 </html>
