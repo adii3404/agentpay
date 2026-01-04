@@ -16,32 +16,40 @@
   </button>
 
   <p id="output" style="margin-top:20px"></p>
+  <h3>💳 Payment History</h3>
+<ul id="history" style="text-align:left;max-width:300px;margin:auto"></ul>
 
- <script>
+
+<script>
 function runAgent() {
   const task = document.querySelector("textarea").value;
+  const output = document.getElementById("output");
+  const history = document.getElementById("history");
 
   if (!task.trim()) {
-    document.getElementById("output").innerText =
-      "⚠️ Please enter a task for the AI agent.";
+    output.innerText = "⚠️ Please enter a task for the AI agent.";
     return;
   }
 
-  document.getElementById("output").innerText =
-    "🤖 Agent is thinking using Gemini...\n";
+  output.innerText = "🤖 Gemini agent reasoning...\n";
 
   setTimeout(() => {
-    const aiResponse =
-      "📄 AI Response: Task understood and processed.\n" +
-      "🧠 Agent Decision: This task requires AI processing.\n" +
-      "💰 Payment Triggered: 0.01 USDC\n" +
-      "⛓ Settled on Arc (testnet)\n\n" +
-      "✅ Task completed successfully.";
+    const amount = "0.01 USDC";
+    const entry = document.createElement("li");
+    entry.innerText = `Task: "${task}" → Charged ${amount} on Arc`;
 
-    document.getElementById("output").innerText = aiResponse;
+    history.prepend(entry);
+
+    output.innerText =
+      "📄 AI Response: Task processed successfully.\n" +
+      "🧠 Agent Decision: AI processing required.\n" +
+      "💰 Payment: " + amount + "\n" +
+      "⛓ Settlement: Arc testnet\n\n" +
+      "✅ Done.";
   }, 1500);
 }
 </script>
+
 
 
 </body>
