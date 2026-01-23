@@ -1,2 +1,2 @@
 # agentpay
-AI agent that performs tasks and charges USDC per action on Arc
+AI agent that performs tasks and charges USDC per action on Arc.
